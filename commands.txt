@@ -1,0 +1,20 @@
+// para testear hay que bajar rsc
+https://get-coursier.io/docs/cli-installation
+
+1) hay que installar  couriser installed
+curl -fLo cs https://git.io/coursier-cli-linux &&
+    chmod +x cs &&
+    ./cs
+
+2) luego instalamos rsc
+./cs install rsc --contrib
+
+3) agregamo al path
+export PATH="$PATH:/home/{user}/.local/share/coursier/bin"
+
+4) hacemos una prueba
+rsc tcp://localhost:8888 -r greetings --stream -d javier --log
+rsc tcp://localhost:8888 -r solo-texto   -d javier
+rsc tcp://localhost:8888 --request --route times -d Foo --debug --stacktrace
+
+http://localhost:8080/times/javier
