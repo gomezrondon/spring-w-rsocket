@@ -55,6 +55,6 @@ class TimeController {
 class TimeService {
 	Flux<String> time(String someValue) {
 		return Flux.fromStream(Stream.generate(()-> someValue +" "+ LocalDateTime.now().toString()+"\n"))
-				.delayElements(Duration.ofSeconds(1));
+				.delayElements(Duration.ofMillis(500));
 	}
 }
