@@ -25,23 +25,18 @@ public class RSocketClientIntegrationTest {
     @DisplayName("testing test-time Rsocket endpoint")
     void test1() {
         //given
-       // TimeServiceImp timeServiceImp = new TimeServiceImp(requester);
-
-        //when
         Flux<String> streamTime = service.getStreamTime("Test-1");
 
 
-        //then
+        //when
          Assertions.assertNotNull(streamTime);
         Flux<String> takeElements = streamTime.take(5);
-        Assertions.assertEquals(5, takeElements.count().block());
-/*
-        StepVerifier.create(streamTime)
-                //.expectSubscription()
-              //  .expectNextCount(5)
-                .verifyComplete();
-*/
 
+        //then
+        StepVerifier.create(takeElements)
+                 .expectSubscription()
+                 .expectNextCount(5)
+                .verifyComplete();
 
     }
 
