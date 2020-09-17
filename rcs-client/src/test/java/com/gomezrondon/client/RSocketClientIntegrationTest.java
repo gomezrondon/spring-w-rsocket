@@ -25,7 +25,7 @@ public class RSocketClientIntegrationTest {
     @Autowired
     RSocketRequester.Builder builder;
 
-    // For every test the we need to re connect
+    // For every test we need to re connect
     RSocketRequester getRequester(RSocketRequester.Builder builder) {
         return builder
                 .connectTcp("localhost", 8888)
